@@ -20,6 +20,8 @@ export default function App() {
   const [searchEndData, setSearchEndData] = useState([]);
   const [searchEndQuery, setSearchEndQuery] = useState('');
   const [dropShowEnd, setEndDropShow] = useState(false);
+  const [ContainerINput, setContainerInput] = useState('');
+  const [Weight, setWeight] = useState('');
 
 
   const handlerContainer = (event) => setContainerDropdown(event.target.value);
@@ -34,7 +36,7 @@ export default function App() {
 
     if (query.length >= 3) {
       try {
-        const rsp = await axios.get(`https://665d-206-42-124-208.ngrok-free.app/location?search=${query}`);
+        const rsp = await axios.get(`https://6342-206-42-124-208.ngrok-free.app/location?search=${query}`);
         setSearchStartData(rsp.data.locations);
         setStartdropShow(true);
       } catch (error) {
@@ -54,7 +56,7 @@ export default function App() {
 
     if (query.length >= 3) {
       try {
-        const rsp = await axios.get(`https://665d-206-42-124-208.ngrok-free.app/location?search=${query}`);
+        const rsp = await axios.get(`https://6342-206-42-124-208.ngrok-free.app/location?search=${query}`);
         setSearchEndData(rsp.data.locations);
         setEndDropShow(true);
       } catch (error) {
@@ -75,12 +77,30 @@ export default function App() {
 
   };
 
-
   const ItemClickStart = (item) => {
     setSearchStartQuery(`${item.businessLocationName} - ${item.businessLocode}`);
     setStartdropShow(false);
     setSearchStartData([]);
   };
+
+  const handler = async () => {
+    if (!searchStartQuery || !searchEndQuery || !selectedDate || !containerDropdown || !ContainerINput || !selectUnit || !selectedOptionOne || !selectedOptionSec) {
+      alert('Please fill all the fields');
+      
+    } else {
+      try {
+        const resp = await axios.post("https://6342-206-42-124-208.ngrok-free.app/api/send_offer")
+        alert('Data sent successfully', resp.data);
+        console.log('Data sent successfully', resp.data);
+        
+      }
+      catch (error) {
+        console.error('Error ---->> data:', error.message);
+      }
+      
+    }
+
+  }
 
 
   return (
@@ -157,7 +177,7 @@ export default function App() {
 
               {dropShowEnd ? (
                 <div className="searchData">
-                  {searchStartData.map((item, index) => (
+                  {searchEndData.map((item, index) => (
                     <div
                       key={index}
                       className="searchItem"
@@ -206,6 +226,7 @@ export default function App() {
           <CiCalendarDate className="calendarIcon" />
           <DatePicker
             selected={selectedDate}
+            value={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             dateFormat="dd/MM/yyyy"
             placeholderText="Choose a date"
@@ -251,8 +272,9 @@ export default function App() {
             <div className="inptBox2">
               <input
                 style={{ width: "90%", border: "none", outline: "none", marginLeft: "5px" }}
-
-                type="text"
+                value={ContainerINput}
+                onChange={(e) => setContainerInput(e.target.value)}
+                type="number"
                 id="quantity"
                 placeholder="Enter Container Quantity"
               />
@@ -265,7 +287,7 @@ export default function App() {
               <input
                 style={{ width: "90%", border: "none", outline: "none", marginLeft: "5px" }}
 
-                type="text"
+                type="number"
                 id="Weight"
                 placeholder="Enter Weight per Container"
               />
@@ -327,7 +349,7 @@ export default function App() {
 
       </div>
 
-      <button className="btn">Submit</button>
+      <button className="btn" onClick={handler}>Submit</button>
     </div>
   );
 }
