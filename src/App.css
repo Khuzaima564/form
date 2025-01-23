@@ -1,0 +1,224 @@
+.card {
+    padding: 20px;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 75%;
+    margin: 3rem auto;
+    background-color: #ffffff;
+}
+
+.mainView {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.section {
+    flex: 1 1 40%;
+    padding: 15px;
+    border: 1px solid orange;
+    border-radius: 8px;
+    background-color: #ffffff;
+    min-width: 40%;
+}
+
+.section label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.inptBox {
+    width: 90%; 
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative; 
+
+}
+
+.inptBox2 {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.subTxt {
+    font-size: 1rem;
+    margin: 0 0 10px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.dateMain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.customDatePicker {
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 0;
+}
+
+.dropdown {
+    max-width:  100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+@media (max-width: 995px) {
+    .card {
+        max-width: 80%;
+    }
+
+    .section {
+        flex: 1 1 100%;
+    }
+
+    .dateMain {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        max-width: 80%;
+    }
+
+    .mainView {
+        padding: 10px;
+    }
+
+    .section {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .subTxt {
+        font-size: 0.8rem;
+    }
+
+    .inptBox {
+        padding: 8px;
+    }
+
+    .dateMain {
+        max-width: 90%;
+    }
+}
+
+
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.checkbox {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background-color: #fff;
+}
+
+.checkbox.checked {
+    background-color: #000;
+    color: #fff;
+}
+
+.checkmark {
+    font-size: 8px;
+}
+
+.label {
+    font-size: 14px;
+    color: #000;
+}
+.unitContainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.btn {
+    background: orange;
+    padding: 10px 20px; 
+    font-size: 14px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    border: none;
+}
+.searchData {
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    width: calc(100% - 2px); 
+    background-color: #fdfdfd;
+    border: 1px solid #cccccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10; 
+    overflow: hidden; 
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.searchData p {
+    margin: 0;
+}
+/* .searchData p:hover {
+    background: orange;
+} */
+.searchItem {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+}
+.itemTxt {
+    font-size: 13px;
+    /* margin: 25px; */
+    color: #000000;
+    font-weight: 500;
+}
